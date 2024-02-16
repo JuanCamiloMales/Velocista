@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <title> Servidor velocista </title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .Input_Constantes {
+      display: flex;
+      height: 30px;
+      margin: 10px;
+      align-items: center;
+    }
+    .Input_title {
+      padding-right: 10px;
+    }
+    .Boton {
+      padding: 5px 5px;
+      margin: 10px 20px;
+    }
+  </style>
+  <body>
+    <h1> Servidor velocista </h1>
+    <div class="Input_Constantes">
+      <H4 class="Input_title"> KP </H4>
+      <input id="KP" type="number" >
+    </div>
+    <div class="Input_Constantes">
+      <H4 class="Input_title"> KD </H4>
+      <input id="KD" type="number" >
+    </div>
+    <div class="Input_Constantes">
+      <H4 class="Input_title"> KI </H4>
+      <input id="KI" type="number" >
+    </div>
+    <div>
+      <button class="Boton" onclick="envierConstantes()"> Enviar constantes </button>
+      <button class="Boton"> Iniciar robot </button>
+    </div>
+  </body>
+  <script>
+    function envierConstantes() {
+      const KP = document.getElementById("KP").value;
+      const KD = document.getElementById("KD").value;
+      const KI = document.getElementById("KI").value;
+
+      const href = window.location.href;
+      const url = href + 'Constantes?' + 'KP=' + KP + '&' + 'KD=' + KD + '&' + 'KI=' + KI
+      
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+              throw new Error('La solicitud no fue exitosa');
+          }
+        })
+    }
+  </script>
+</html>
