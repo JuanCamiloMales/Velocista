@@ -31,7 +31,6 @@ void setup() {
   pinMode(7,OUTPUT);
   pinMode(5,OUTPUT);
   
-  
   qtr.setTypeAnalog(signalPin);                                //Se indica el pin INPUT de lectura analógica o digital del sensor
   qtr.setSensorPins((const uint8_t[]){11,9,7,5}, sensorCount); //array de pines de lectura ordenados desde LSB hacia MSB
   delay(200);
@@ -40,12 +39,11 @@ void setup() {
   for (uint16_t i = 0; i < 200; i++){ qtr.calibrate();  }
   digitalWrite(15, LOW); 
   delay(1000); 
-   
 }
 
 //--------------------------------------------------LOOP()
 void loop() {
-  Salida     = Lectura_Sensor(); 
+  Salida = Lectura_Sensor(); 
   delay(500);
 }
 
